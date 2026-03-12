@@ -11,7 +11,14 @@ let error at msg = Error.error at "dimension" msg
 
 (* Environment *)
 
-module Map = Map.Make(String)
+module Map = struct
+  include Map.Make(String)
+
+  (* add_to_list 함수 정의 추가 *)
+  let add_to_list k v m =
+    let l = try find k m with Not_found -> [] in
+    add k (v :: l) m
+end
 
 type ctx = iter list
 type dims = (region * ctx) Map.t
