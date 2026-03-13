@@ -13,3 +13,8 @@ def $equiv_(syntax X, x_1*, x_2*) = false  -- otherwise
 def $transpose_(syntax X, X**) : X**
 def $transpose_(syntax X, eps^n) = eps
 def $transpose_(syntax X, (x_1 x*)*) = x_1* $transpose_(X, x**)
+
+
+def $forall(bool*) : bool 
+def $forall(eps) = true
+def $forall(bool_1 bool*) = bool_1 /\ $forall(bool*)

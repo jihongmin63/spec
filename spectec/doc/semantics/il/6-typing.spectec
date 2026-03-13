@@ -45,16 +45,16 @@ rule Sub_typ/struct:
   E |- t_1 <: t_2
   -- Expand_typ: E |- t_1 => STRUCT tf_1*
   -- Expand_typ: E |- t_2 => STRUCT tf_2*
-  -- (if (a `: t_2a `- `{q*} pr*) = tf_2)*
-  -- (if (a `: t_1a `- `{q*} pr*) <- tf_1*)*
+  -- (if (a `: t_2a `- `{q*} pr_2*) = tf_2)*
+  -- (if (a `: t_1a `- `{q*} pr_1*) <- tf_1* /\ $forall((pr_2 <- pr_1*)*))*
   -- (Sub_typ: E |- t_1a <: t_2a)*
 
 rule Sub_typ/variant:
   E |- t_1 <: t_2
   -- Expand_typ: E |- t_1 => VARIANT tc_1*
   -- Expand_typ: E |- t_2 => VARIANT tc_2*
-  -- (if (m `: t_1a `- `{q*} pr*) = tc_1)*
-  -- (if (m `: t_2a `- `{q*} pr*) <- tc_2*)*
+  -- (if (m `: t_1a `- `{q*} pr_1*) = tc_1)*
+  -- (if (m `: t_2a `- `{q*} pr_2*) <- tc_2* /\ $forall((pr_2 <- pr_1*)*))*
   -- (Sub_typ: E |- t_1a <: t_2a)*
 
 rule Sub_typ/iter:
